@@ -2,18 +2,23 @@ version: '3'
 services:
  	web:
 		 build: .
- 		ports:
- 		- "5000:5000"
 		volumes :
 		- .:/app
-		ports : "5000:5000"
+		#ports : "5000:5000"
 		environment:
-			DATABASE_URL : postgres://
+			DATABASE_URL : postgres://hh-pgsql-public.ebi.ac.uk
+		links:
+      			- "db:database"
+	db:
+		image: postgres
+		ports: - "8001:5432"
 	postgres :
 		image: postgres:9.6.2-alpine
 		environment :
-			POSTGRES_USER: user
-			POSTGRES_DB: db
+			POSTGRES_USER: reader
+			POSTGRES_DB: pfmegrnargs
+			POSTGRES_PASSWORD : NWDMCE5xdipIjRrp
+			CSV_FILENAME: data.csv
 	
  	redis:
  		image: "redis:alpine"
