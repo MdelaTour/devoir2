@@ -6,7 +6,7 @@ services:
 		- .:/app
 		#ports : "5000:5000"
 		environment:
-			DATABASE_URL : postgres://hh-pgsql-public.ebi.ac.uk
+			DATABASE_URL : postgres://db:5432
 		links:
       			- "db:database"
 	db:
