@@ -1,14 +1,15 @@
-#réutilisation d'image existante
 FROM python:3.8.6
 
-#run additional cmd
 RUN pip install os-sys
 RUN pip install psycopg2
-RUN mkdir /app
-
+RUN pip install unittest
+RUN mkdir /manager
+RUN wget https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -P /
+	RUN chmod +x /wait-for-it.sh
+	ENTRYPOINT ["/wait-for-it.sh", "db:5432", "--"]
 ADD __main__.py .
 
-COPY . ./file
+COPY . ./manager
 
  #define a startup cmd
 CMD ["python", "__main__.py"]
