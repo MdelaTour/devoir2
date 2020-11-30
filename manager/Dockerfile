@@ -4,7 +4,8 @@ FROM python:3.8.6
 #run additional cmd
 RUN pip install os-sys
 RUN pip install psycopg2
-WORKDIR /manager/
+RUN mkdir /app
+
 ADD __main__.py .
 
 COPY . ./file

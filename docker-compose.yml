@@ -4,5 +4,16 @@ services:
 		 build: .
  		ports:
  		- "5000:5000"
+		volumes :
+		- .:/app
+		ports : "5000:5000"
+		environment:
+			DATABASE_URL : postgres://
+	postgres :
+		image: postgres:9.6.2-alpine
+		environment :
+			POSTGRES_USER: user
+			POSTGRES_DB: db
+	
  	redis:
  		image: "redis:alpine"
