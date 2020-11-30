@@ -22,3 +22,7 @@ services:
 	
  	redis:
  		image: "redis:alpine"
+	networks:
+ 		 default:
+    			# Use a custom driver
+    			driver: custom-driver-1
